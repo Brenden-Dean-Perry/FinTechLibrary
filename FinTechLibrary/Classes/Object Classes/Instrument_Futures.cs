@@ -43,9 +43,12 @@ namespace FinTechLibrary
             return currentInstrumentPrice - getFuturesFairValuePrice();
         }
 
-        public decimal getFuturesFairValuePrice()
+        public decimal getFuturesFairValuePrice(int daysPerYear = 360)
         {
-            return currentInstrumentPrice - currentSpotPriceOfUnderlyingInstrument;
+            double futureValueFactor = Math.Pow( 1 + (double)riskFreeInterestRate, getTimeFactorInDaysPerYear(daysPerYear));
+            decimal futureValueOfPrice = currentSpotPriceOfUnderlyingInstrument * (decimal)futureValueFactor;
+            decimal dividendInIndexPoints = getAnnualDividendPayoutAmount() * (decimal)getTimeFactorInDaysPerYear(daysPerYear);
+            return futureValueOfPrice - dividendInIndexPoints;
         }
     }
 }

@@ -6,15 +6,10 @@ using System.Threading.Tasks;
 
 namespace FinTechLibrary
 {
-    internal abstract class FinancialOption : FinancialInstrumentDerivative
+    public abstract class FinancialOption : FinancialInstrumentDerivative
     {
         internal decimal optionStrikePrice { get; set; }
         internal decimal volatilityOfUnderlyingInstrument { get; set; }
-
-        internal decimal getTimeTillExpiration()
-        {
-            throw new NotImplementedException();
-        }
 
     }
 }

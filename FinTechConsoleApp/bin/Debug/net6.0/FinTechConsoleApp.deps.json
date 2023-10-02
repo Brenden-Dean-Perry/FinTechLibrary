@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "FinTechConsoleApp/1.0.0": {
+        "dependencies": {
+          "FinTechLibrary": "1.0.0"
+        },
+        "runtime": {
+          "FinTechConsoleApp.dll": {}
+        }
+      },
+      "FinTechLibrary/1.0.0": {
+        "runtime": {
+          "FinTechLibrary.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "FinTechConsoleApp/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "FinTechLibrary/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

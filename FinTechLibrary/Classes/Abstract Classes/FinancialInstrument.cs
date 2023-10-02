@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace FinTechLibrary
 {
-    internal abstract class FinancialInstrument : ITrade
+    public abstract class FinancialInstrument : ITrade
     {
         internal string instrumentTicker { get;set;}
         internal decimal currentInstrumentPrice { get;set;}
         internal decimal costBasisInstrumentPrice { get;set;}
+        internal decimal annualDividendPayoutAmount { get;set;}
 
-
-        public void Buy()
+        public string Buy()
         {
-            throw new NotImplementedException();
+            return "Instrument was purchased!";
         }
 
         public void Sell()
@@ -23,7 +23,7 @@ namespace FinTechLibrary
             throw new NotImplementedException();
         }
 
-        public  string getTicker()
+        public string getTicker()
         {
             return instrumentTicker;
         }
@@ -38,6 +38,11 @@ namespace FinTechLibrary
             return currentInstrumentPrice;
         }
 
+        public void setCurrentCostBasisPrice(decimal price)
+        {
+            costBasisInstrumentPrice = price;
+        }
+
         public decimal getCurrentCostBasisPrice()
         {
             return costBasisInstrumentPrice;
@@ -46,5 +51,21 @@ namespace FinTechLibrary
         {
             return currentInstrumentPrice - costBasisInstrumentPrice;
         }
+
+        public void setAnnualdDividendPayoutAmount(decimal AnnualDividendPayoutAmount)
+        {
+            annualDividendPayoutAmount = AnnualDividendPayoutAmount;
+        }
+
+        public decimal getAnnualDividendPayoutAmount()
+        {
+            return annualDividendPayoutAmount;
+        }
+
+        public decimal getCurrentDividendYield()
+        {
+            return annualDividendPayoutAmount / currentInstrumentPrice;
+        }
+
     }
 }
