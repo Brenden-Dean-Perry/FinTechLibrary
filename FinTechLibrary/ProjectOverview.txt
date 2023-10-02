@@ -1,0 +1,22 @@
+﻿FinTechLibrary is a C# class library to assist with financial analysis.
+
+The Language of Programming
+- Methods are actions. Therefore, methods should be verbs.
+- Classes and object attributes should be nouns.
+
+Elements of "Good" Object-Oriented Programming
+- Interfaces will be used to enforce methods (actions) that must be implemented within class that use said interface.
+- Abstract classes will be used to outline default behavior and attributes. Abstract classes cannot be instantiated.
+- Object classes will be used to outline object implementation that can be instantiated.
+- Polymorphism will be used to control sub-class implementation, but will be used sparingly. A horse class probably should not inherit from the vehicel class. 
+- Data structures are classes that have no methods (actions). The purpose of data structures is to encapsolate data in a singlar concept (object).
+
+Clean Code
+- We will follow the best practices outlined by Robert Martin in his book 'Clean Code: A Handbook of Agile Software Craftsmanship'
+	- Your code should tell a clear story.
+	- Your code should limit the amount of vertical scrolling. Related functions should be next to one another. Higher levels of abstraction will come first. 
+	- Comments will be limited and not replace clear code design. Comments are failures to express yourself through code, clearly.
+	- Functions will strive to use no parameters. 3 max with little exception. Anymore than 3 and the parameters likley could be encapsolated by a concept (class).
+	- Vertical spacing will be tight between related concepts. Blank lines will only be used to seperate thoughts.
+	- Each line of code will represent one idea.
+	- Variables and functions will be well-named for clarity, always. Longer names are usually better than short names for the sake of clarity.
