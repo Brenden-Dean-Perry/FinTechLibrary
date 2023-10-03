@@ -7,16 +7,16 @@ using System.Threading.Tasks;
 
 namespace FinTechLibrary
 {
-    public class Instrument_CallOption : FinancialOption
+    public class Instrument_CallOption : FinancialOption, IFinancialOption
     {
-        public decimal getIntrisicValue()
+        public decimal GetIntrisicValue()
         {
             return Math.Max(currentSpotPriceOfUnderlyingInstrument - optionStrikePrice, 0);
         }
 
-        public decimal getImpliedValue()
+        public decimal GetTimeValue()
         {
-            return currentInstrumentPrice - getIntrisicValue();
+            return currentInstrumentPrice - GetIntrisicValue();
         }
 
 

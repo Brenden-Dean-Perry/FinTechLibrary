@@ -11,4 +11,6 @@ Console.WriteLine(reset.ToString());
 string message = callOption.Buy();
 Console.WriteLine(message + " At Price: " + price.ToString());
 
+Console.WriteLine(Math_Finance.FutureValue(100, 0.05, 10).ToString());
+
 Console.ReadLine();

@@ -12,27 +12,27 @@ namespace FinTechLibrary
         internal decimal riskFreeInterestRate { get; set; }
         internal DateTime expirationDate { get; set; }
 
-        public double getDaysUntilExpirationIncludingTime()
+        public double GetDaysUntilExpirationIncludingTime()
         {
             return (DateTime.Today - expirationDate).TotalDays;
         }
 
-        public double getTimeFactorInDaysPerYearIncludingTime(int daysPerYear = 360)
+        public double GetTimeFactorInDaysPerYearIncludingTime(int daysPerYear = 360)
         {
-            return getDaysUntilExpirationIncludingTime() / daysPerYear;
+            return GetDaysUntilExpirationIncludingTime() / daysPerYear;
         }
 
-        public double getDaysUntilExpiration()
+        public double GetDaysUntilExpiration()
         {
             return (DateTime.Today - expirationDate).Days;
         }
 
-        public double getTimeFactorInDaysPerYear(int daysPerYear = 360)
+        public double GetTimeFactorInDaysPerYear(int daysPerYear = 360)
         {
-            return getDaysUntilExpiration() / daysPerYear;
+            return GetDaysUntilExpiration() / daysPerYear;
         }
 
-        public void setExpirationDate(DateTime dateTime)
+        public void SetExpirationDate(DateTime dateTime)
         {
             expirationDate = dateTime;
         }

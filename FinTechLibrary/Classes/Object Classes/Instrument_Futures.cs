@@ -8,11 +8,15 @@ namespace FinTechLibrary
 {
     internal class Instrument_Futures : FinancialInstrumentDerivative
     {
-        public string getFuturesMarketDescription()
+        public string GetFuturesMarketDescription()
         {
-            if(this.getFuturesPriceBasis() > 0)
+            if(this.GetFuturesPriceBasis() > 0)
             {
                 return "Contango";
+            }
+            else if(this.GetFuturesPriceBasis() == 0)
+            {
+                return "Flat";
             }
             else
             {
@@ -20,16 +24,20 @@ namespace FinTechLibrary
             }
         }
 
-        public decimal getFuturesPriceBasis()
+        public decimal GetFuturesPriceBasis()
         {
             return currentInstrumentPrice - currentSpotPriceOfUnderlyingInstrument;
         }
 
-        public string getFuturesFairValueDescription()
+        public string GetFuturesFairValueDescription()
         {
-            if (this.getFuturesMispricing() > 0)
+            if (this.GetFuturesMispricing() > 0)
             {
                 return "Rich";
+            }
+            else if(this.GetFuturesMispricing() == 0)
+            {
+                return "Fairly Valued";
             }
             else
             {
@@ -37,17 +45,16 @@ namespace FinTechLibrary
             }
         }
 
-        public decimal getFuturesMispricing()
+        public decimal GetFuturesMispricing()
         {
-            //Returns the richness/cheapness of futures
-            return currentInstrumentPrice - getFuturesFairValuePrice();
+            return currentInstrumentPrice - GetFuturesFairValuePrice();
         }
 
-        public decimal getFuturesFairValuePrice(int daysPerYear = 360)
+        public decimal GetFuturesFairValuePrice(int daysPerYear = 360)
         {
-            double futureValueFactor = Math.Pow( 1 + (double)riskFreeInterestRate, getTimeFactorInDaysPerYear(daysPerYear));
+            double futureValueFactor = Math_Finance.FutureValueFactor((double)riskFreeInterestRate, GetTimeFactorInDaysPerYear(daysPerYear));
             decimal futureValueOfPrice = currentSpotPriceOfUnderlyingInstrument * (decimal)futureValueFactor;
-            decimal dividendInIndexPoints = getAnnualDividendPayoutAmount() * (decimal)getTimeFactorInDaysPerYear(daysPerYear);
+            decimal dividendInIndexPoints = getAnnualDividendPayoutAmount() * (decimal)GetTimeFactorInDaysPerYear(daysPerYear);
             return futureValueOfPrice - dividendInIndexPoints;
         }
     }

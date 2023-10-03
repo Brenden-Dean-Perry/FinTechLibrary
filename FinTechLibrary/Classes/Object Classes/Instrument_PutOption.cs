@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace FinTechLibrary 
 { 
-    internal class Instrument_PutOption : FinancialOption
+    internal class Instrument_PutOption : FinancialOption, IFinancialOption
     {
-        public decimal getIntrisicValue()
+        public decimal GetIntrisicValue()
         {
             return Math.Max(optionStrikePrice - currentSpotPriceOfUnderlyingInstrument, 0);
         }
 
-        public decimal getImpliedValue()
+        public decimal GetTimeValue()
         {
-            return currentInstrumentPrice - getIntrisicValue();
+            return currentInstrumentPrice - GetIntrisicValue();
         }
     }
 }
