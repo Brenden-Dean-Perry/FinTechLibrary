@@ -11,6 +11,16 @@
         "runtime": {
           "bin/placeholder/FinTechLibrary.dll": {}
         }
+      },
+      "GeneralOperationalLibrary/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/GeneralOperationalLibrary.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/GeneralOperationalLibrary.dll": {}
+        }
       }
     }
   },
@@ -19,11 +29,17 @@
       "type": "project",
       "path": "../FinTechLibrary/FinTechLibrary.csproj",
       "msbuildProject": "../FinTechLibrary/FinTechLibrary.csproj"
+    },
+    "GeneralOperationalLibrary/1.0.0": {
+      "type": "project",
+      "path": "../GeneralOperationLibrary/GeneralOperationalLibrary.csproj",
+      "msbuildProject": "../GeneralOperationLibrary/GeneralOperationalLibrary.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
-      "FinTechLibrary >= 1.0.0"
+      "FinTechLibrary >= 1.0.0",
+      "GeneralOperationalLibrary >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -60,6 +76,9 @@
           "projectReferences": {
             "C:\\Users\\brend\\Desktop\\GitHub\\FinTechLibrary\\FinTechLibrary\\FinTechLibrary.csproj": {
               "projectPath": "C:\\Users\\brend\\Desktop\\GitHub\\FinTechLibrary\\FinTechLibrary\\FinTechLibrary.csproj"
+            },
+            "C:\\Users\\brend\\Desktop\\GitHub\\FinTechLibrary\\GeneralOperationLibrary\\GeneralOperationalLibrary.csproj": {
+              "projectPath": "C:\\Users\\brend\\Desktop\\GitHub\\FinTechLibrary\\GeneralOperationLibrary\\GeneralOperationalLibrary.csproj"
             }
           }
         }

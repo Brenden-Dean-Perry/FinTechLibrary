@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\FinTechLibrary\FinTechLibrary.csproj" />
+    <ProjectReference Include="..\GeneralOperationLibrary\GeneralOperationalLibrary.csproj" />
   </ItemGroup>
 
 </Project>
