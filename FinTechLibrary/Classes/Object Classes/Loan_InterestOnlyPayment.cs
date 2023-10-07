@@ -8,10 +8,9 @@ namespace FinTechLibrary
 {
     internal class Loan_InterestOnlyPayment : FinancialLoan
     {
-        public override decimal TotalPaymentsOverLifeOfLoan()
+        public override decimal PaymentAmountPerPeriod()
         {
-            decimal paymentAmount = LoanAmount * PeriodInterestRate;
-            return paymentAmount * Periods;
+            return LoanAmount * PeriodInterestRate;
         }
 
         public override decimal TotalInterestOverLifeOfLoan()
@@ -19,9 +18,12 @@ namespace FinTechLibrary
             return TotalPaymentsOverLifeOfLoan() - LoanAmount;
         }
 
-        public override decimal RemainingLoanBalance(int Period)
+        public override decimal OutstandingLoanBalance(decimal Period)
         {
-            throw new NotImplementedException();
+            decimal timePassedSinceLastPayment = Period - Math.Truncate(Period);
+            decimal accumulatedInterestDue = LoanAmount * PeriodInterestRate * timePassedSinceLastPayment;
+            return LoanAmount + accumulatedInterestDue;
         }
+
     }
 }
