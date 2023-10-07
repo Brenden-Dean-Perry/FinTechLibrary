@@ -16,3 +16,5 @@ C:\Users\brend\Desktop\GitHub\FinTechLibrary\FinTechConsoleApp\obj\Debug\net6.0\
 C:\Users\brend\Desktop\GitHub\FinTechLibrary\FinTechConsoleApp\bin\Debug\net6.0\FinTechLibrary.dll
 C:\Users\brend\Desktop\GitHub\FinTechLibrary\FinTechConsoleApp\bin\Debug\net6.0\FinTechLibrary.pdb
 C:\Users\brend\Desktop\GitHub\FinTechLibrary\FinTechConsoleApp\obj\Debug\net6.0\FinTechConsoleApp.csproj.CopyComplete
+C:\Users\brend\Desktop\GitHub\FinTechLibrary\FinTechConsoleApp\bin\Debug\net6.0\GeneralOperationalLibrary.dll
+C:\Users\brend\Desktop\GitHub\FinTechLibrary\FinTechConsoleApp\bin\Debug\net6.0\GeneralOperationalLibrary.pdb

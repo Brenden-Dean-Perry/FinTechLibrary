@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace FinTechLibrary
 {
-    public enum OptionType
+    public interface IFinancialLoanFactory
     {
-        Call = 1,
-        Put = -1
+        public FinancialLoan CreateLoanObject(LoanPaymentType paymentType);
+
     }
 }

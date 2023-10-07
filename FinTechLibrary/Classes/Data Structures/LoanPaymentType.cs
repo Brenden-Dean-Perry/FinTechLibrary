@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace FinTechLibrary
 {
-    public enum OptionType
+    public enum LoanPaymentType
     {
-        Call = 1,
-        Put = -1
+        FullAmortization = 0,
+        InterestOnly = 1,
     }
 }

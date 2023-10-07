@@ -1,0 +1,12 @@
+C:\Users\brend\Desktop\GitHub\FinTechLibrary\GeneralOperationLibrary\bin\Debug\net6.0\GeneralOperationalLibrary.deps.json
+C:\Users\brend\Desktop\GitHub\FinTechLibrary\GeneralOperationLibrary\bin\Debug\net6.0\GeneralOperationalLibrary.dll
+C:\Users\brend\Desktop\GitHub\FinTechLibrary\GeneralOperationLibrary\bin\Debug\net6.0\GeneralOperationalLibrary.pdb
+C:\Users\brend\Desktop\GitHub\FinTechLibrary\GeneralOperationLibrary\obj\Debug\net6.0\GeneralOperationalLibrary.csproj.AssemblyReference.cache
+C:\Users\brend\Desktop\GitHub\FinTechLibrary\GeneralOperationLibrary\obj\Debug\net6.0\GeneralOperationalLibrary.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\brend\Desktop\GitHub\FinTechLibrary\GeneralOperationLibrary\obj\Debug\net6.0\GeneralOperationalLibrary.AssemblyInfoInputs.cache
+C:\Users\brend\Desktop\GitHub\FinTechLibrary\GeneralOperationLibrary\obj\Debug\net6.0\GeneralOperationalLibrary.AssemblyInfo.cs
+C:\Users\brend\Desktop\GitHub\FinTechLibrary\GeneralOperationLibrary\obj\Debug\net6.0\GeneralOperationalLibrary.csproj.CoreCompileInputs.cache
+C:\Users\brend\Desktop\GitHub\FinTechLibrary\GeneralOperationLibrary\obj\Debug\net6.0\GeneralOperationalLibrary.dll
+C:\Users\brend\Desktop\GitHub\FinTechLibrary\GeneralOperationLibrary\obj\Debug\net6.0\refint\GeneralOperationalLibrary.dll
+C:\Users\brend\Desktop\GitHub\FinTechLibrary\GeneralOperationLibrary\obj\Debug\net6.0\GeneralOperationalLibrary.pdb
+C:\Users\brend\Desktop\GitHub\FinTechLibrary\GeneralOperationLibrary\obj\Debug\net6.0\ref\GeneralOperationalLibrary.dll

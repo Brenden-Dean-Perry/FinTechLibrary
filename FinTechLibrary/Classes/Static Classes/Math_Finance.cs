@@ -20,7 +20,17 @@ namespace FinTechLibrary
 
         public static double PresentValueFactor(double interestRateOverPeriod, double periods)
         {
-            return 1 / FutureValueFactor(interestRateOverPeriod, periods);
+            return 1 / Math.Pow(1 + interestRateOverPeriod, periods);
         }
+
+        public static double LoanPayment(double principalLoanAmount, double interestRateOverPeriod, int totalNumberOfPeriods)
+        {
+            double singlePeriodInterestOwedOnLoan = principalLoanAmount * interestRateOverPeriod;
+            double factor = Math.Pow(1 + interestRateOverPeriod, totalNumberOfPeriods);
+            factor = factor / (Math.Pow(1 + interestRateOverPeriod, totalNumberOfPeriods) - 1);
+            return singlePeriodInterestOwedOnLoan * factor;
+        }
+
+
     }
 }
