@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace FinTechLibrary
 {
-    public interface IFinancialLoanFactory
+    public class FinancialOptionStrategy
     {
-        public FinancialLoan CreateObject(LoanPaymentType paymentType);
-
+        public List<IFinancialOption> FinancialOptions { get; set; } = new List<IFinancialOption>();
     }
 }

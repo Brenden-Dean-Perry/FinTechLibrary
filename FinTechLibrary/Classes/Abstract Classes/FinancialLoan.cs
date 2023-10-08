@@ -13,7 +13,6 @@ namespace FinTechLibrary
         public decimal PeriodInterestRate { get; set; }
 
         public abstract decimal PaymentAmountPerPeriod();
-        public abstract decimal TotalInterestOverLifeOfLoan();
         public abstract decimal OutstandingLoanBalance(decimal period);
 
         public decimal TotalPaymentsOverLifeOfLoan()
@@ -21,5 +20,9 @@ namespace FinTechLibrary
             return PaymentAmountPerPeriod() * Periods;
         }
 
+        public decimal TotalInterestOverLifeOfLoan()
+        {
+            return TotalPaymentsOverLifeOfLoan() - LoanAmount;
+        }
     }
 }

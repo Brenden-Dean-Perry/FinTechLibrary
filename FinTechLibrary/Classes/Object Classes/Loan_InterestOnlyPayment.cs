@@ -13,11 +13,6 @@ namespace FinTechLibrary
             return LoanAmount * PeriodInterestRate;
         }
 
-        public override decimal TotalInterestOverLifeOfLoan()
-        {
-            return TotalPaymentsOverLifeOfLoan() - LoanAmount;
-        }
-
         public override decimal OutstandingLoanBalance(decimal Period)
         {
             decimal timePassedSinceLastPayment = Period - Math.Truncate(Period);

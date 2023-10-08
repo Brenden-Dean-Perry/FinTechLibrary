@@ -8,7 +8,7 @@ namespace FinTechLibrary
 {
     public class FinancialLoanFactoryImp : IFinancialLoanFactory
     {
-        public FinancialLoan CreateLoanObject(LoanPaymentType paymentType)
+        public FinancialLoan CreateObject(LoanPaymentType paymentType)
         {
             switch (paymentType)
             {

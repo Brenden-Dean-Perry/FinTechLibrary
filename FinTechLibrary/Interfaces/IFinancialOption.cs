@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FinTechLibrary
 {
-    internal interface IFinancialOption
+    public interface IFinancialOption
     {
         decimal GetIntrisicValue();
 
