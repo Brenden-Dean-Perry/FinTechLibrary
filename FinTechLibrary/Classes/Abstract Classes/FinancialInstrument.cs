@@ -14,7 +14,7 @@ namespace FinTechLibrary
 
         public decimal getCurrentDividendYield()
         {
-            return AnnualDividendPayoutAmount / CurrentInstrumentPrice;
+            return AnnualDividendPayoutAmount / CurrentPrice;
         }
 
     }

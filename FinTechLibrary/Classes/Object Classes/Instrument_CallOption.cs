@@ -11,12 +11,12 @@ namespace FinTechLibrary
     {
         public decimal GetIntrisicValue()
         {
-            return Math.Max(currentSpotPriceOfUnderlyingInstrument - optionStrikePrice, 0);
+            return Math.Max(CurrentSpotPriceOfUnderlyingInstrument - OptionStrikePrice, 0);
         }
 
         public decimal GetTimeValue()
         {
-            return currentInstrumentPrice - GetIntrisicValue();
+            return CurrentPrice - GetIntrisicValue();
         }
 
 

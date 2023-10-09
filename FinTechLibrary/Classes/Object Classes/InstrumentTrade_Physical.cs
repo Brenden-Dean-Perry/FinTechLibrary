@@ -12,7 +12,7 @@ namespace FinTechLibrary
 
         public override decimal GetOpenGainLoss()
         {
-            decimal changeInPrice = (Instrument.getCurrentPrice() - base.TradePrice);
+            decimal changeInPrice = (Instrument.CurrentPrice - base.TradePrice);
             decimal direction = (int)base.TradeType;
             return direction * changeInPrice * base.Quantity;
         }
@@ -20,7 +20,7 @@ namespace FinTechLibrary
         public override decimal GetCurrentMarketValue()
         {
             decimal direction = (int)base.TradeType;
-            return direction * Instrument.getCurrentPrice() * base.Quantity;
+            return direction * Instrument.CurrentPrice * base.Quantity;
         }
 
         public override decimal GetCurrentNotional()

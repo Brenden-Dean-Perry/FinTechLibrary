@@ -9,28 +9,27 @@ namespace FinTechLibrary
     public class InstrumentTrade_DerivativeOption : InstrumentTrade
     {
         public FinancialOption Instrument { get; set; }
-
         public override decimal GetOpenGainLoss()
         {
-            decimal changeInPrice = (Instrument.getCurrentPrice() - base.TradePrice);
+            decimal changeInPrice = (Instrument.CurrentPrice - base.TradePrice);
             decimal direction = (int)base.TradeType;
-            return direction * changeInPrice * base.Quantity * Instrument.contractMultiplier;
+            return direction * changeInPrice * base.Quantity * Instrument.ContractMultiplier;
         }
         public override decimal GetCurrentMarketValue()
         {
             decimal direction = (int)base.TradeType;
-            return direction * Instrument.getCurrentPrice() * base.Quantity * Instrument.contractMultiplier;
+            return direction * Instrument.CurrentPrice * base.Quantity * Instrument.ContractMultiplier;
         }
 
         public override decimal GetCurrentNotional()
         {
             decimal direction = (int)base.TradeType;
-            return direction * Instrument.getCurrentPrice() * base.Quantity * Instrument.contractMultiplier;
+            return direction * Instrument.CurrentSpotPriceOfUnderlyingInstrument * base.Quantity * Instrument.ContractMultiplier;
         }
 
         public override decimal GetCurrentDeltaAdjustedNotional()
         {
-            return GetCurrentNotional() * Instrument.delta;
+            return GetCurrentNotional() * Math.Abs(Instrument.Delta);
         }
 
 

@@ -17,16 +17,19 @@ Console.WriteLine("Interest rate:" + loan.PeriodInterestRate.ToString());
 Console.WriteLine("Outstanding loan balance:" + loan.OutstandingLoanBalance((decimal)5.5));
 
 FinancialOptionFactory OptionFactoryImp = new FinancialOptionFactory();
-FinancialOption option = OptionFactoryImp.CreateObject(OptionType.Call);
+FinancialOption option = OptionFactoryImp.CreateObject(OptionType.Put);
 option.CurrentPrice = 10;
 option.ExpirationDate = DateTime.Parse("12/1/2023");
-option.ContractMultiplier = 50;
+option.ContractMultiplier = 1;
 option.CurrentSpotPriceOfUnderlyingInstrument = 4200;
+option.Delta = (decimal)0.5;
 
 InstrumentTrade_DerivativeOption callTrade = new InstrumentTrade_DerivativeOption();
 callTrade.Instrument = option;
-callTrade.Quantity = 10;
+callTrade.Quantity = 1;
 callTrade.TradePrice = 10;
+callTrade.TradeType = TradeType.Buy;
+
 
 FinancialInstrumentFactory factoryImp = new FinancialInstrumentFactory();
 FinancialInstrument spy = factoryImp.CreateObject(FinancialInstrumentType.Equity);
@@ -35,35 +38,37 @@ spy.CurrentPrice = 4200;
 
 InstrumentTrade_Physical trade_spy = new InstrumentTrade_Physical();
 trade_spy.Instrument = spy;
-trade_spy.Quantity = 100;
+trade_spy.Quantity = 0;
 trade_spy.TradeType = TradeType.Sell;
 trade_spy.TradePrice = 4400;
 
 
 
-goldFutures.setCurrentPrice(1840);
-goldFutures.setInstrumentTicker("MGZ3");
-DateTime expiration = DateTime.Parse("12/10/2023");
-goldFutures.SetExpirationDate(expiration);
-goldFutures.SetContractMultipler(50);
+//goldFutures.setCurrentPrice(1840);
+//goldFutures.setInstrumentTicker("MGZ3");
+//DateTime expiration = DateTime.Parse("12/10/2023");
+//goldFutures.SetExpirationDate(expiration);
+//goldFutures.SetContractMultipler(50);
 
-InstrumentTrade_DerivativeDelta1 trade = new InstrumentTrade_DerivativeDelta1();
-trade.Instrument = goldFutures;
-trade.Quantity = 1;
-trade.TradePrice = (1740);
-trade.TradeType = TradeType.Sell;
+//InstrumentTrade_DerivativeDelta1 trade = new InstrumentTrade_DerivativeDelta1();
+//trade.Instrument = goldFutures;
+//trade.Quantity = 1;
+//trade.TradePrice = (1740);
+//trade.TradeType = TradeType.Sell;
 
 
 Portfolio portfolio = new Portfolio();
 portfolio.RecordTrade(trade_spy);
-portfolio.RecordTrade(trade);
+portfolio.RecordTrade(callTrade);
 
 Console.WriteLine("SPY MV: " + trade_spy.GetCurrentMarketValue().ToString());
 
 Console.WriteLine("Portfolio Gain/Loss: " + portfolio.GetOpenGainLoss().ToString());
-spy.setCurrentPrice(3200);
+spy.CurrentPrice = 3200;
 Console.WriteLine("Portfolio Gain/Loss: " + portfolio.GetOpenGainLoss().ToString());
 
 Console.WriteLine("Portfolio notional: " + portfolio.GetCurrentNotional());
+
+Console.WriteLine("Portfolio delta adjusted notional: " + portfolio.GetCurrentDeltaAdjustedNotional());
 
 Console.ReadLine();

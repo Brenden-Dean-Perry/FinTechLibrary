@@ -8,14 +8,14 @@ namespace FinTechLibrary
 {
     public abstract class FinancialOption : FinancialInstrumentDerivative
     {
-        internal decimal optionStrikePrice { get; set; }
-        internal decimal historicalVolatilityOfUnderlyingInstrument { get; set; }
-        internal decimal impliedVolatilityOfUnderlyingInstrument { get; set; }
-        internal decimal delta { get; set; }
-        internal decimal gamma { get; set; }
-        internal decimal theta { get; set; }
-        internal decimal vega { get; set; }
-        internal decimal rho { get; set; }
+        public decimal OptionStrikePrice { get; set; }
+        public decimal HistoricalVolatilityOfUnderlyingInstrument { get; set; }
+        public decimal ImpliedVolatilityOfUnderlyingInstrument { get; set; }
+        public decimal Delta { get; set; }
+        public decimal Gamma { get; set; }
+        public decimal Theta { get; set; }
+        public decimal Vega { get; set; }
+        public decimal Rho { get; set; }
 
     }
 }
