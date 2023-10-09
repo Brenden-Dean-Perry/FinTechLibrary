@@ -22,17 +22,17 @@ option.CurrentPrice = 10;
 option.ExpirationDate = DateTime.Parse("12/1/2023");
 option.ContractMultiplier = 1;
 option.CurrentSpotPriceOfUnderlyingInstrument = 4200;
-option.Delta = (decimal)0.5;
+option.Delta = (decimal)-0.5;
 
-InstrumentTrade_DerivativeOption callTrade = new InstrumentTrade_DerivativeOption();
+InstrumentTrade_DerivativePutOption callTrade = new InstrumentTrade_DerivativePutOption();
 callTrade.Instrument = option;
 callTrade.Quantity = 1;
 callTrade.TradePrice = 10;
-callTrade.TradeType = TradeType.Buy;
+callTrade.TradeType = TradeType.Sell;
 
 
-FinancialInstrumentFactory factoryImp = new FinancialInstrumentFactory();
-FinancialInstrument spy = factoryImp.CreateObject(FinancialInstrumentType.Equity);
+FinancialInstrumentFactory factory = new FinancialInstrumentFactory();
+FinancialInstrument spy = factory.CreateObject(FinancialInstrumentType.Equity);
 spy.InstrumentTicker = "SPY";
 spy.CurrentPrice = 4200;
 
@@ -41,7 +41,6 @@ trade_spy.Instrument = spy;
 trade_spy.Quantity = 0;
 trade_spy.TradeType = TradeType.Sell;
 trade_spy.TradePrice = 4400;
-
 
 
 //goldFutures.setCurrentPrice(1840);

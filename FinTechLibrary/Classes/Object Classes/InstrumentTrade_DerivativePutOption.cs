@@ -6,24 +6,25 @@ using System.Threading.Tasks;
 
 namespace FinTechLibrary
 {
-    public class InstrumentTrade_DerivativeOption : InstrumentTrade
+    public class InstrumentTrade_DerivativePutOption : InstrumentTrade
     {
         public FinancialOption Instrument { get; set; }
         public override decimal GetOpenGainLoss()
         {
             decimal changeInPrice = (Instrument.CurrentPrice - base.TradePrice);
-            decimal direction = (int)base.TradeType;
+            decimal direction = -(int)base.TradeType;
             return direction * changeInPrice * base.Quantity * Instrument.ContractMultiplier;
         }
+
         public override decimal GetCurrentMarketValue()
         {
-            decimal direction = (int)base.TradeType;
+            decimal direction = -(int)base.TradeType;
             return direction * Instrument.CurrentPrice * base.Quantity * Instrument.ContractMultiplier;
         }
 
         public override decimal GetCurrentNotional()
         {
-            decimal direction = (int)base.TradeType;
+            decimal direction = -(int)base.TradeType;
             return direction * Instrument.CurrentSpotPriceOfUnderlyingInstrument * base.Quantity * Instrument.ContractMultiplier;
         }
 
@@ -31,11 +32,5 @@ namespace FinTechLibrary
         {
             return GetCurrentNotional() * Math.Abs(Instrument.Delta);
         }
-
-
-
-
-
-
     }
 }

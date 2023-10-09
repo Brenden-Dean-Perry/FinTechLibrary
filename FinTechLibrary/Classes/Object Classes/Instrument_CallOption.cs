@@ -18,7 +18,5 @@ namespace FinTechLibrary
         {
             return CurrentPrice - GetIntrisicValue();
         }
-
-
     }
 }

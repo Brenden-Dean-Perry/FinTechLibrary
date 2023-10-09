@@ -17,5 +17,7 @@ namespace FinTechLibrary
         public decimal Vega { get; set; }
         public decimal Rho { get; set; }
 
+
+
     }
 }
