@@ -12,9 +12,19 @@ namespace FinTechLibrary
         private List<FinancialInstrument> positions { get; set; } = new List<FinancialInstrument>();
         private List<InstrumentTrade> tradeHistory { get; set; } = new List<InstrumentTrade>();
 
+        public List<AssetClass> GetPortfolioStructure()
+        {
+            return StrategicAssetAllocation;
+        }
+
         public List<InstrumentTrade> GetTradeHistory()
         {
             return tradeHistory;
+        }
+
+        public void SetStrategicAssetAllocation(List<AssetClass> assetClasses)
+        {
+            StrategicAssetAllocation = assetClasses;
         }
 
         public void RecordTrade(InstrumentTrade instrumentTrade)

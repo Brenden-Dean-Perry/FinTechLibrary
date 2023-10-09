@@ -68,12 +68,48 @@ Portfolio portfolio = new Portfolio();
 portfolio.RecordTrade(trade_spy);
 portfolio.RecordTrade(callTrade);
 
-PortfolioUI.ShowDataSummary(portfolio);
+List<InvestmentStrategy> strategyList = new List<InvestmentStrategy>();
+InvestmentStrategy strategy = new InvestmentStrategy();
+strategy.StrategyName = "AI Equity";
+strategyList.Add(strategy);
+
+InvestmentStrategy strategy2 = new InvestmentStrategy();
+strategy2.StrategyName = "Put write";
+strategyList.Add(strategy2);
+
+
+List<AssetClass> assetClasses = new List<AssetClass>();
+AssetClass Asset = new AssetClass();
+Asset.AssetClassName = "Equity";
+Asset.AssetClassOrder = 0;
+Asset.TargetAllocationPercentage = (decimal)1;
+Asset.InvestmentStrategies = strategyList;
+assetClasses.Add(Asset);
+
+
+AssetClass Asset2 = new AssetClass();
+Asset2.AssetClassName = "Fixed";
+Asset2.AssetClassOrder = 1;
+Asset2.TargetAllocationPercentage = (decimal)-1;
+Asset2.InvestmentStrategies = strategyList;
+assetClasses.Add(Asset2);
+
+AssetClass Asset3 = new AssetClass();
+Asset3.AssetClassName = "Debt";
+Asset3.AssetClassOrder = 2;
+Asset3.TargetAllocationPercentage = (decimal)0;
+Asset3.InvestmentStrategies = strategyList;
+assetClasses.Add(Asset3);
+
+portfolio.SetStrategicAssetAllocation(assetClasses);
+PortfolioUI.ShowPortfolioStructure(portfolio);
+
+PortfolioUI.ShowDataSummaryStatistics(portfolio);
 
 Console.WriteLine("Price update:");
 spy.CurrentPrice = 3200;
 
-PortfolioUI.ShowDataSummary(portfolio);
+PortfolioUI.ShowDataSummaryStatistics(portfolio);
 
 PortfolioUI.ShowTradeHistory(portfolio);
 
