@@ -13,31 +13,28 @@ namespace FinTechLibrary
             return (decimal)Math_Finance.LoanPayment((double)LoanAmount, (double)PeriodInterestRate, (int)Periods);
         }
 
-        public override decimal OutstandingLoanBalance(decimal PeriodsPassed)
+        public override decimal OutstandingLoanBalance(decimal PeriodsInTheFuture)
         {
-            decimal FullPeriodsPassed = Math.Truncate(PeriodsPassed);
-            decimal PartialPeriodPassed = PeriodsPassed - FullPeriodsPassed;
-            decimal TotalPaymentsMade = PaymentAmountPerPeriod() * FullPeriodsPassed;
-            return LoanAmount + TotalInterestIncurred(PeriodsPassed) - TotalPaymentsMade;
+            return CurrentLoanBalance_Recursive(LoanAmount, PeriodsInTheFuture);
         }
 
-        private decimal TotalInterestIncurred(decimal PeriodsPassed)
+        private decimal CurrentLoanBalance_Recursive(decimal CurrentLoanBalance, decimal PeriodsInTheFuture)
         {
-            decimal FullPeriodsPassed = Math.Truncate(PeriodsPassed);
-            decimal PartialPeriodPassed = PeriodsPassed - FullPeriodsPassed;
-
-            decimal totalInterestIncurred = 0;
-            decimal CurrentLoanBalance = LoanAmount;
-            for (int i = 0; i < FullPeriodsPassed; i++)
+            decimal FullPeriodsPassed = Math.Truncate(PeriodsInTheFuture);
+            
+            if (FullPeriodsPassed > 0)
             {
-                decimal accruedInterestOverPeriod = CurrentLoanBalance * PeriodInterestRate;
-                totalInterestIncurred = totalInterestIncurred + accruedInterestOverPeriod;
-                CurrentLoanBalance = CurrentLoanBalance + accruedInterestOverPeriod - PaymentAmountPerPeriod();
+                CurrentLoanBalance = CurrentLoanBalance + (CurrentLoanBalance * PeriodInterestRate) - PaymentAmountPerPeriod();
+                CurrentLoanBalance = CurrentLoanBalance_Recursive(CurrentLoanBalance, PeriodsInTheFuture - 1);
             }
-            totalInterestIncurred = totalInterestIncurred + CurrentLoanBalance * PeriodInterestRate * PartialPeriodPassed;
-            return totalInterestIncurred;
-        }
+            else if(HasPartialPeriodInterestAccrued(PeriodsInTheFuture) == true)
+            {
+                decimal PartialPeriodPassed = PeriodsInTheFuture - FullPeriodsPassed;
+                CurrentLoanBalance = CurrentLoanBalance + CurrentLoanBalance * PeriodInterestRate * PartialPeriodPassed;
+            }
 
+            return CurrentLoanBalance;   
+        }
 
     }
 }

@@ -14,7 +14,8 @@ decimal interestPaid = loan.TotalPaymentsOverLifeOfLoan();
 Console.WriteLine("Payment:" + loan.PaymentAmountPerPeriod().ToString());
 Console.WriteLine("Interest Paid:" + interestPaid.ToString());
 Console.WriteLine("Interest rate:" + loan.PeriodInterestRate.ToString());
-Console.WriteLine("Outstanding loan balance:" + loan.OutstandingLoanBalance((decimal)9.99999));
+Console.WriteLine("Outstanding loan balance:" + loan.OutstandingLoanBalance((decimal)9.999999));
+
 
 FinancialOptionFactory OptionFactoryImp = new FinancialOptionFactory();
 FinancialOption option = OptionFactoryImp.CreateObject(OptionType.Put);
@@ -46,7 +47,7 @@ spy.CurrentPrice = 4200;
 
 InstrumentTrade_Physical trade_spy = new InstrumentTrade_Physical();
 trade_spy.Instrument = spy;
-trade_spy.Quantity = 0;
+trade_spy.Quantity = 10;
 trade_spy.TradeType = TradeType.Sell;
 trade_spy.TradePrice = 4400;
 

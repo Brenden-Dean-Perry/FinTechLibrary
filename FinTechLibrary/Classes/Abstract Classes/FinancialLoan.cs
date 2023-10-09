@@ -24,5 +24,20 @@ namespace FinTechLibrary
         {
             return TotalPaymentsOverLifeOfLoan() - LoanAmount;
         }
+
+        public bool HasPartialPeriodInterestAccrued(decimal Periods)
+        {
+            decimal FullPeriodsPassed = Math.Truncate(Periods);
+            decimal PartialPeriodPassed = Periods - FullPeriodsPassed;
+
+            if(PartialPeriodPassed > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }
