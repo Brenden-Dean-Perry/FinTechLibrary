@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FinTechLibrary
 {
-    public abstract class FinancialInstrumentDerivative : FinancialInstrument
+    public abstract class FinancialDerivative : FinancialInstrument
     {
         public decimal CurrentSpotPriceOfUnderlyingInstrument { get; set; }
         public decimal RiskFreeInterestRate { get; set; }

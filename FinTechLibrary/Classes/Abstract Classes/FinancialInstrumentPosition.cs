@@ -6,29 +6,37 @@ using System.Threading.Tasks;
 
 namespace FinTechLibrary
 {
-    public class FinancialInstrumentPosition : IPosition
+    public abstract class FinancialInstrumentPosition : IPosition
     {
         public FinancialInstrument Instrument { get; set; }
+        public TradeDirectionType TradeDirection { get; set; }
         public decimal Quantity { get; set; }
+        public decimal AnnualDividendPayoutAmount { get; set; }
 
-        public decimal GetCurrentDeltaAdjustedNotional()
+        public decimal GetCurrentDividendYield()
         {
-            throw new NotImplementedException();
-        }
-
-        public decimal GetCurrentMarketValue()
-        {
-            throw new NotImplementedException();
-        }
-
-        public decimal GetCurrentNotional()
-        {
-            throw new NotImplementedException();
+            return AnnualDividendPayoutAmount / Instrument.CurrentPrice;
         }
 
         public decimal GetOpenGainLoss()
         {
             throw new NotImplementedException();
         }
+
+        public virtual decimal GetCurrentMarketValue()
+        {
+            return (int)TradeDirection * Quantity * Instrument.CurrentPrice;
+        }
+
+        public virtual decimal GetCurrentNotional()
+        {
+            return GetCurrentMarketValue();
+        }
+
+        public virtual decimal GetCurrentDeltaAdjustedNotional()
+        {
+            return GetCurrentNotional();
+        }
+
     }
 }

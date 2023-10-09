@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FinTechLibrary
 {
-    internal class Instrument_Futures : FinancialInstrumentDerivative
+    internal class Instrument_Futures : FinancialDerivative
     {
         public string GetFuturesMarketDescription()
         {
@@ -26,7 +26,7 @@ namespace FinTechLibrary
 
         public decimal GetFuturesPriceBasis()
         {
-            return CurrentPrice - CurrentSpotPriceOfUnderlyingInstrument;
+            return base.Instrument.CurrentPrice - CurrentSpotPriceOfUnderlyingInstrument;
         }
 
         public string GetFuturesFairValueDescription()
@@ -47,14 +47,14 @@ namespace FinTechLibrary
 
         public decimal GetFuturesMispricing()
         {
-            return CurrentPrice - GetFuturesFairValuePrice();
+            return base.Instrument.CurrentPrice - GetFuturesFairValuePrice();
         }
 
         public decimal GetFuturesFairValuePrice(int daysPerYear = 360)
         {
             double futureValueFactor = Math_Finance.FutureValueFactor((double)RiskFreeInterestRate, GetTimeFactorInDaysPerYear(daysPerYear));
             decimal futureValueOfPrice = CurrentSpotPriceOfUnderlyingInstrument * (decimal)futureValueFactor;
-            decimal dividendInIndexPoints = AnnualDividendPayoutAmount * (decimal)GetTimeFactorInDaysPerYear(daysPerYear);
+            decimal dividendInIndexPoints = base.Instrument.AnnualDividendPayoutAmount * (decimal)GetTimeFactorInDaysPerYear(daysPerYear);
             return futureValueOfPrice - dividendInIndexPoints;
         }
     }

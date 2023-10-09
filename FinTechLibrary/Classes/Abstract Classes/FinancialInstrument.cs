@@ -10,12 +10,7 @@ namespace FinTechLibrary
     {
         public string InstrumentTicker { get;set;}
         public decimal CurrentPrice { get;set;}
-        public decimal AnnualDividendPayoutAmount { get;set;}
 
-        public decimal GetCurrentDividendYield()
-        {
-            return AnnualDividendPayoutAmount / CurrentPrice;
-        }
 
     }
 }

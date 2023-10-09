@@ -8,7 +8,7 @@ namespace FinTechLibrary
 {
     public class InstrumentTrade_DerivativeDelta1 : InstrumentTrade
     {
-        public FinancialInstrumentDerivative Instrument { get; set; }
+        public FinancialDerivative Instrument { get; set; }
 
         public override decimal GetOpenGainLoss()
         {

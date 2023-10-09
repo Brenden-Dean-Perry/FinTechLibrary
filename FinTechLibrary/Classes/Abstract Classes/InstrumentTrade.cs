@@ -9,7 +9,7 @@ namespace FinTechLibrary
     public abstract class InstrumentTrade : IPosition
     {
         public FinancialInstrument Instrument { get; set; }
-        public TradeType TradeType { get; set; }
+        public TradeDirectionType TradeDirectionType { get; set; }
         public decimal Quantity { get; set; }
         public DateTime TradeDateTime { get; set; }
         public decimal TradePrice { get; set; }

@@ -7,7 +7,7 @@ using System.Data;
 
 namespace FinTechLibrary
 {
-    public abstract class FinancialLoan
+    public abstract class FinancialLoan : FinancialInstrument
     {
         public decimal LoanAmount { get; set; }
         public decimal Periods { get; set; }

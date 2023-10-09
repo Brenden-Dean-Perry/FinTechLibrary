@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FinTechLibrary
 {
-    public abstract class FinancialOption : FinancialInstrumentDerivative
+    public abstract class FinancialOption : FinancialDerivative
     {
         public decimal OptionStrikePrice { get; set; }
         public decimal HistoricalVolatilityOfUnderlyingInstrument { get; set; }

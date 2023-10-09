@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace FinTechLibrary
 {
-    public enum TradeType
+    public enum TradeDirectionType
     {
-        Buy = 1,
-        Sell = -1
+        Long = 1,
+        Short = -1
     }
 }
