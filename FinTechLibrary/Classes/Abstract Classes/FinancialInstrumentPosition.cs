@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace FinTechLibrary
 {
-    public class InvestmentStrategy : IPosition
+    public class FinancialInstrumentPosition : IPosition
     {
-        public string StrategyName { get; set; }
-        public int StrategyOrder { get; set; } = 0;
-        private List<FinancialInstrumentPosition> Positions { get; set; } = new List<FinancialInstrumentPosition>();
+        public FinancialInstrument Instrument { get; set; }
+        public decimal Quantity { get; set; }
 
         public decimal GetCurrentDeltaAdjustedNotional()
         {

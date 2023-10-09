@@ -11,6 +11,7 @@ namespace FinTechLibrary
     {
         public static void ConsoleHeaderWriteLine(string message)
         {
+            Console.WriteLine();
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine(message);
             Console.ForegroundColor = ConsoleColor.White;
@@ -28,24 +29,31 @@ namespace FinTechLibrary
         public static void ShowPortfolioStructure(Portfolio portfolio)
         {
             ConsoleHeaderWriteLine("Portfolio structure:");
-            foreach(AssetClass assetClass in portfolio.GetPortfolioStructure())
+            Console.WriteLine("Asset Class" + "\t\t\t" + "Target Weight");
+            Console.WriteLine("-----------------------------------------");
+            foreach (AssetClass assetClass in portfolio.GetPortfolioStructure())
             {
-                Console.WriteLine(assetClass.AssetClassName + "\t" + ObjectToText.Percent(assetClass.TargetAllocationPercentage,2));
-                
+                Console.WriteLine(assetClass.AssetClassName + "\t\t\t\t" + ObjectToText.Percent(assetClass.TargetAllocationPercentage,2));
+                int i = 1;
                 foreach(InvestmentStrategy strategy in assetClass.InvestmentStrategies)
                 {
-                    Console.WriteLine("\t" + strategy.StrategyName);
+                    Console.WriteLine("\t" + "Strategy " + i.ToString() + ": " + strategy.StrategyName);
+                    i++;
                 }
+                Console.WriteLine();
             }
         }
 
         public static void ShowTradeHistory(Portfolio portfolio)
         {
             ConsoleHeaderWriteLine("Trade History:");
-            foreach(InstrumentTrade trade in portfolio.GetTradeHistory())
+            Console.WriteLine("Trade Date | Direction | Quantity | Trade Price");
+            foreach (InstrumentTrade trade in portfolio.GetTradeHistory())
             {
                 Console.WriteLine(trade.TradeDateTime + " | " + trade.TradeType.ToString() + " | " + trade.Quantity + " | " + trade.TradePrice);
             }
         }
+
+        
     }
 }

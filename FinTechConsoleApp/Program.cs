@@ -1,5 +1,6 @@
 ﻿using FinTechLibrary;
 using GeneralOperationalLibrary;
+using System.Data;
 
 Console.WriteLine("Program starting...");
 
@@ -14,6 +15,15 @@ Console.WriteLine("Payment:" + ObjectToText.NumberWithCommas(loan.PaymentAmountP
 Console.WriteLine("Interest Paid:" + interestPaid.ToString());
 Console.WriteLine("Interest rate:" + ObjectToText.Percent(loan.PeriodInterestRate,4));
 Console.WriteLine("Outstanding loan balance:" + ObjectToText.NumberWithCommas(loan.OutstandingLoanBalance((decimal)9.999999),2));
+
+DataTable loanSchedule = loan.GetLoanAmoritizationSchedule();
+List<string> rows = ObjectToText.DataTableToMessageOutput(loanSchedule);
+
+PortfolioUI.ConsoleHeaderWriteLine("Loan Amoritization Schedule");
+foreach(string row in rows)
+{
+    Console.WriteLine(row);
+}
 
 
 FinancialOptionFactory OptionFactory = new FinancialOptionFactory();
@@ -68,40 +78,8 @@ Portfolio portfolio = new Portfolio();
 portfolio.RecordTrade(trade_spy);
 portfolio.RecordTrade(callTrade);
 
-List<InvestmentStrategy> strategyList = new List<InvestmentStrategy>();
-InvestmentStrategy strategy = new InvestmentStrategy();
-strategy.StrategyName = "AI Equity";
-strategyList.Add(strategy);
 
-InvestmentStrategy strategy2 = new InvestmentStrategy();
-strategy2.StrategyName = "Put write";
-strategyList.Add(strategy2);
-
-
-List<AssetClass> assetClasses = new List<AssetClass>();
-AssetClass Asset = new AssetClass();
-Asset.AssetClassName = "Equity";
-Asset.AssetClassOrder = 0;
-Asset.TargetAllocationPercentage = (decimal)1;
-Asset.InvestmentStrategies = strategyList;
-assetClasses.Add(Asset);
-
-
-AssetClass Asset2 = new AssetClass();
-Asset2.AssetClassName = "Fixed";
-Asset2.AssetClassOrder = 1;
-Asset2.TargetAllocationPercentage = (decimal)-1;
-Asset2.InvestmentStrategies = strategyList;
-assetClasses.Add(Asset2);
-
-AssetClass Asset3 = new AssetClass();
-Asset3.AssetClassName = "Debt";
-Asset3.AssetClassOrder = 2;
-Asset3.TargetAllocationPercentage = (decimal)0;
-Asset3.InvestmentStrategies = strategyList;
-assetClasses.Add(Asset3);
-
-portfolio.SetStrategicAssetAllocation(assetClasses);
+portfolio.SetStrategicAssetAllocation(DataGeneration.GetMockPortfolio());
 PortfolioUI.ShowPortfolioStructure(portfolio);
 
 PortfolioUI.ShowDataSummaryStatistics(portfolio);
