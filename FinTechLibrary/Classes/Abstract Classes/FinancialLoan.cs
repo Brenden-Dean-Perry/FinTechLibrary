@@ -9,11 +9,11 @@ namespace FinTechLibrary
     public abstract class FinancialLoan
     {
         public decimal LoanAmount { get; set; }
-        public int Periods { get; set; }
+        public decimal Periods { get; set; }
         public decimal PeriodInterestRate { get; set; }
 
         public abstract decimal PaymentAmountPerPeriod();
-        public abstract decimal OutstandingLoanBalance(decimal period);
+        public abstract decimal OutstandingLoanBalance(decimal PeriodsPassed);
 
         public decimal TotalPaymentsOverLifeOfLoan()
         {

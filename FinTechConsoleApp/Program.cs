@@ -14,7 +14,7 @@ decimal interestPaid = loan.TotalPaymentsOverLifeOfLoan();
 Console.WriteLine("Payment:" + loan.PaymentAmountPerPeriod().ToString());
 Console.WriteLine("Interest Paid:" + interestPaid.ToString());
 Console.WriteLine("Interest rate:" + loan.PeriodInterestRate.ToString());
-Console.WriteLine("Outstanding loan balance:" + loan.OutstandingLoanBalance((decimal)5.5));
+Console.WriteLine("Outstanding loan balance:" + loan.OutstandingLoanBalance((decimal)9.99999));
 
 FinancialOptionFactory OptionFactoryImp = new FinancialOptionFactory();
 FinancialOption option = OptionFactoryImp.CreateObject(OptionType.Put);
@@ -22,13 +22,21 @@ option.CurrentPrice = 10;
 option.ExpirationDate = DateTime.Parse("12/1/2023");
 option.ContractMultiplier = 1;
 option.CurrentSpotPriceOfUnderlyingInstrument = 4200;
-option.Delta = (decimal)-0.5;
+option.Delta = (decimal)0.5;
 
 InstrumentTrade_DerivativePutOption callTrade = new InstrumentTrade_DerivativePutOption();
 callTrade.Instrument = option;
 callTrade.Quantity = 1;
 callTrade.TradePrice = 10;
 callTrade.TradeType = TradeType.Sell;
+
+
+FinancialOption putoption = OptionFactoryImp.CreateObject(OptionType.Put);
+putoption.CurrentPrice = 10;
+putoption.ExpirationDate = DateTime.Parse("12/1/2023");
+putoption.ContractMultiplier = 1;
+putoption.CurrentSpotPriceOfUnderlyingInstrument = 4200;
+putoption.Delta = (decimal)-0.5;
 
 
 FinancialInstrumentFactory factory = new FinancialInstrumentFactory();

@@ -10,23 +10,32 @@ namespace FinTechLibrary
     {
         public override decimal PaymentAmountPerPeriod()
         {
-            return (decimal)Math_Finance.LoanPayment((double)LoanAmount, (double)PeriodInterestRate, Periods);
+            return (decimal)Math_Finance.LoanPayment((double)LoanAmount, (double)PeriodInterestRate, (int)Periods);
         }
 
-        public override decimal OutstandingLoanBalance(decimal Period)
+        public override decimal OutstandingLoanBalance(decimal PeriodsPassed)
         {
-            decimal FullPeriodsPassed = Math.Truncate(Period);
+            decimal FullPeriodsPassed = Math.Truncate(PeriodsPassed);
+            decimal PartialPeriodPassed = PeriodsPassed - FullPeriodsPassed;
             decimal TotalPaymentsMade = PaymentAmountPerPeriod() * FullPeriodsPassed;
-            return LoanAmount + TotalInterestIncurred(0,0) - TotalPaymentsMade;
+            return LoanAmount + TotalInterestIncurred(PeriodsPassed) - TotalPaymentsMade;
         }
 
-        private decimal TotalInterestIncurred(decimal CurrentLoanBalance, int period)
+        private decimal TotalInterestIncurred(decimal PeriodsPassed)
         {
-            if(period == 0)
+            decimal FullPeriodsPassed = Math.Truncate(PeriodsPassed);
+            decimal PartialPeriodPassed = PeriodsPassed - FullPeriodsPassed;
+
+            decimal totalInterestIncurred = 0;
+            decimal CurrentLoanBalance = LoanAmount;
+            for (int i = 0; i < FullPeriodsPassed; i++)
             {
-                return 0;
+                decimal accruedInterestOverPeriod = CurrentLoanBalance * PeriodInterestRate;
+                totalInterestIncurred = totalInterestIncurred + accruedInterestOverPeriod;
+                CurrentLoanBalance = CurrentLoanBalance + accruedInterestOverPeriod - PaymentAmountPerPeriod();
             }
-            return 1;
+            totalInterestIncurred = totalInterestIncurred + CurrentLoanBalance * PeriodInterestRate * PartialPeriodPassed;
+            return totalInterestIncurred;
         }
 
 
