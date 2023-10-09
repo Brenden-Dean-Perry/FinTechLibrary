@@ -17,8 +17,7 @@ namespace FinTechLibrary
         {
             decimal FullPeriodsPassed = Math.Truncate(Period);
             decimal TotalPaymentsMade = PaymentAmountPerPeriod() * FullPeriodsPassed;
-            decimal TotalInterestIncurred = 
-            return LoanAmount + TotalInterestIncurred - TotalPaymentsMade;
+            return LoanAmount + TotalInterestIncurred(0,0) - TotalPaymentsMade;
         }
 
         private decimal TotalInterestIncurred(decimal CurrentLoanBalance, int period)

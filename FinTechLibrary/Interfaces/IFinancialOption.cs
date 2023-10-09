@@ -9,8 +9,6 @@ namespace FinTechLibrary
     public interface IFinancialOption
     {
         decimal GetIntrisicValue();
-
         decimal GetTimeValue();
-
     }
 }

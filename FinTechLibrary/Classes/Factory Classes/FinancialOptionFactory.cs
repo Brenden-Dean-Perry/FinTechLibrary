@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FinTechLibrary
 {
-    internal class FinancialOptionFactoryImp : IFinancialOptionFactory
+    public class FinancialOptionFactory : IFinancialOptionFactory
     {
         public FinancialOption CreateObject(OptionType optionType)
         {

@@ -8,5 +8,6 @@ namespace FinTechLibrary
 {
     internal class Instrument_Equity : FinancialInstrument
     {
+
     }
 }

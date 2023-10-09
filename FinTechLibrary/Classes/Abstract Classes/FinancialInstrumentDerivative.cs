@@ -8,13 +8,14 @@ namespace FinTechLibrary
 {
     public abstract class FinancialInstrumentDerivative : FinancialInstrument
     {
-        internal decimal currentSpotPriceOfUnderlyingInstrument { get; set; }
-        internal decimal riskFreeInterestRate { get; set; }
-        internal DateTime expirationDate { get; set; }
+        public decimal CurrentSpotPriceOfUnderlyingInstrument { get; set; }
+        public decimal RiskFreeInterestRate { get; set; }
+        public DateTime ExpirationDate { get; set; }
+        public decimal ContractMultiplier { get; set; }
 
         public double GetDaysUntilExpirationIncludingTime()
         {
-            return (DateTime.Today - expirationDate).TotalDays;
+            return (DateTime.Today - ExpirationDate).TotalDays;
         }
 
         public double GetTimeFactorInDaysPerYearIncludingTime(int daysPerYear = 360)
@@ -24,22 +25,12 @@ namespace FinTechLibrary
 
         public double GetDaysUntilExpiration()
         {
-            return (DateTime.Today - expirationDate).Days;
+            return (DateTime.Today - ExpirationDate).Days;
         }
 
         public double GetTimeFactorInDaysPerYear(int daysPerYear = 360)
         {
             return GetDaysUntilExpiration() / daysPerYear;
-        }
-
-        public void SetExpirationDate(DateTime dateTime)
-        {
-            expirationDate = dateTime;
-        }
-
-        public DateTime GetExpirationDate()
-        {
-            return expirationDate;
         }
     }
 }

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace FinTechLibrary
 {
-    internal interface ITrade
+    public enum TradeType
     {
-        string Buy();
-        void Sell();
+        Buy = 1,
+        Sell = -1
     }
 }

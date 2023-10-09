@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FinTechLibrary 
 { 
-    public  class Instrument_PutOption : FinancialOption, IFinancialOption
+    internal class Instrument_PutOption : FinancialOption, IFinancialOption
     {
         public decimal GetIntrisicValue()
         {

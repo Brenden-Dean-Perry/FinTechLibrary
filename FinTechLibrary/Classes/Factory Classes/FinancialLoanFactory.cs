@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FinTechLibrary
 {
-    public class FinancialLoanFactoryImp : IFinancialLoanFactory
+    public class FinancialLoanFactory : IFinancialLoanFactory
     {
         public FinancialLoan CreateObject(LoanPaymentType paymentType)
         {
@@ -20,5 +20,6 @@ namespace FinTechLibrary
                     throw new TypeLoadException();
             }
         }
+
     }
 }

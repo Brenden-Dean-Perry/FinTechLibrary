@@ -8,7 +8,7 @@ namespace FinTechLibrary
 {
     public interface IFinancialOptionFactory
     {
-        public FinancialOption CreateObject(OptionType optionType);
+        FinancialOption CreateObject(OptionType optionType);
 
     }
 }
