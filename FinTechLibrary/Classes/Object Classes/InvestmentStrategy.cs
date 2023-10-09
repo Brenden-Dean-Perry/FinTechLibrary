@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace FinTechLibrary
 {
-    public class FinancialOptionStrategy : IFinancialOptionStrategy, IPosition
+    public class InvestmentStrategy : IPosition
     {
-        public List<IFinancialOption> FinancialOptions { get; set; } = new List<IFinancialOption>();
+        public string StrategyName { get; set; }
+        public int StrategyOrder { get; set; } = 0;
+        public List<FinancialInstrument> Positions { get; set; } = new List<FinancialInstrument>();
 
         public decimal GetCurrentDeltaAdjustedNotional()
         {
@@ -26,21 +28,6 @@ namespace FinTechLibrary
         }
 
         public decimal GetOpenGainLoss()
-        {
-            throw new NotImplementedException();
-        }
-
-        public decimal GetStrategyDelta()
-        {
-            throw new NotImplementedException();
-        }
-
-        public decimal GetStrategyGamma()
-        {
-            throw new NotImplementedException();
-        }
-
-        public decimal GetStrategyUnrealizedGL()
         {
             throw new NotImplementedException();
         }

@@ -8,17 +8,17 @@ namespace FinTechLibrary
 {
     internal class Instrument_Swap : FinancialInstrument
     {
-        internal string payLegTicker { get; set; }
-        internal decimal payLegCostBasisPrice { get; set; }
-        internal decimal payLegCurrentPrice { get; set; }
+        public string PayLegTicker { get; set; }
+        public decimal PayLegCostBasisPrice { get; set; }
+        public decimal PayLegCurrentPrice { get; set; }
 
 
-        internal string recieveLegTicker { get; set; }
-        internal decimal recieveLegCostBasisPrice { get; set; }
-        internal decimal recieveLegCurrentPrice { get; set; }
-        
-        internal decimal financingSpread { get; set; }
-        internal DateTime[] resetDateSchedule { get; set; }
+        public string ReceiveLegTicker { get; set; }
+        public decimal ReceiveLegCostBasisPrice { get; set; }
+        public decimal ReceiveLegCurrentPrice { get; set; }
+
+        public decimal FinancingSpread { get; set; }
+        public DateTime[] ResetDateSchedule { get; set; }
 
     }
 }

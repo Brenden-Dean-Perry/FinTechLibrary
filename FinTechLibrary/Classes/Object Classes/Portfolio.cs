@@ -8,6 +8,7 @@ namespace FinTechLibrary
 {
     public class Portfolio : IPosition
     {
+        private List<AssetClass> StrategicAssetAllocation { get; set; } = new List<AssetClass>();
         private List<FinancialInstrument> positions { get; set; } = new List<FinancialInstrument>();
         private List<InstrumentTrade> tradeHistory { get; set; } = new List<InstrumentTrade>();
 
@@ -15,6 +16,7 @@ namespace FinTechLibrary
         {
             return tradeHistory;
         }
+
         public void RecordTrade(InstrumentTrade instrumentTrade)
         {
             tradeHistory.Add(instrumentTrade);

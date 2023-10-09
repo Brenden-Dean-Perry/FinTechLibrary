@@ -8,6 +8,7 @@ namespace FinTechLibrary
 {
     public abstract class InstrumentTrade : IPosition
     {
+        public FinancialInstrument Instrument { get; set; }
         public TradeType TradeType { get; set; }
         public decimal Quantity { get; set; }
         public DateTime TradeDateTime { get; set; }
@@ -16,7 +17,5 @@ namespace FinTechLibrary
         public abstract decimal GetCurrentMarketValue();
         public abstract decimal GetCurrentNotional();
         public abstract decimal GetCurrentDeltaAdjustedNotional();
-        
-        
     }
 }

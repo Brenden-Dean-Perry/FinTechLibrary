@@ -1,24 +1,23 @@
 ﻿using FinTechLibrary;
+using GeneralOperationalLibrary;
 
 Console.WriteLine("Program starting...");
 
-
-
-FinancialLoanFactory LoanFactoryImp = new FinancialLoanFactory();
-FinancialLoan loan = LoanFactoryImp.CreateObject(LoanPaymentType.FullAmortization);
+FinancialLoanFactory LoanFactory = new FinancialLoanFactory();
+FinancialLoan loan = LoanFactory.CreateObject(LoanPaymentType.FullAmortization);
 loan.LoanAmount = 100;
 loan.PeriodInterestRate = (decimal)0.1;
 loan.Periods = 10;
 decimal interestPaid = loan.TotalPaymentsOverLifeOfLoan();
 
-Console.WriteLine("Payment:" + loan.PaymentAmountPerPeriod().ToString());
+Console.WriteLine("Payment:" + ObjectToText.NumberWithCommas(loan.PaymentAmountPerPeriod(),2));
 Console.WriteLine("Interest Paid:" + interestPaid.ToString());
-Console.WriteLine("Interest rate:" + loan.PeriodInterestRate.ToString());
-Console.WriteLine("Outstanding loan balance:" + loan.OutstandingLoanBalance((decimal)9.999999));
+Console.WriteLine("Interest rate:" + ObjectToText.Percent(loan.PeriodInterestRate,4));
+Console.WriteLine("Outstanding loan balance:" + ObjectToText.NumberWithCommas(loan.OutstandingLoanBalance((decimal)9.999999),2));
 
 
-FinancialOptionFactory OptionFactoryImp = new FinancialOptionFactory();
-FinancialOption option = OptionFactoryImp.CreateObject(OptionType.Put);
+FinancialOptionFactory OptionFactory = new FinancialOptionFactory();
+FinancialOption option = OptionFactory.CreateObject(OptionType.Put);
 option.CurrentPrice = 10;
 option.ExpirationDate = DateTime.Parse("12/1/2023");
 option.ContractMultiplier = 1;
@@ -32,7 +31,7 @@ callTrade.TradePrice = 10;
 callTrade.TradeType = TradeType.Sell;
 
 
-FinancialOption putoption = OptionFactoryImp.CreateObject(OptionType.Put);
+FinancialOption putoption = OptionFactory.CreateObject(OptionType.Put);
 putoption.CurrentPrice = 10;
 putoption.ExpirationDate = DateTime.Parse("12/1/2023");
 putoption.ContractMultiplier = 1;
@@ -69,14 +68,13 @@ Portfolio portfolio = new Portfolio();
 portfolio.RecordTrade(trade_spy);
 portfolio.RecordTrade(callTrade);
 
-Console.WriteLine("SPY MV: " + trade_spy.GetCurrentMarketValue().ToString());
+PortfolioUI.ShowDataSummary(portfolio);
 
-Console.WriteLine("Portfolio Gain/Loss: " + portfolio.GetOpenGainLoss().ToString());
+Console.WriteLine("Price update:");
 spy.CurrentPrice = 3200;
-Console.WriteLine("Portfolio Gain/Loss: " + portfolio.GetOpenGainLoss().ToString());
 
-Console.WriteLine("Portfolio notional: " + portfolio.GetCurrentNotional());
+PortfolioUI.ShowDataSummary(portfolio);
 
-Console.WriteLine("Portfolio delta adjusted notional: " + portfolio.GetCurrentDeltaAdjustedNotional());
+PortfolioUI.ShowTradeHistory(portfolio);
 
 Console.ReadLine();
