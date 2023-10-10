@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FinTechLibrary
 {
-    public abstract class FinancialLoanPosition : FinancialInstrumentPosition, IPosition
+    public class FinancialLoanPosition : FinancialInstrumentPosition, IPosition
     {
         public new FinancialLoan Instrument { get; set; }
 

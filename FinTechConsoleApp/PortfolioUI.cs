@@ -38,6 +38,14 @@ namespace FinTechLibrary
                 foreach(InvestmentStrategy strategy in assetClass.InvestmentStrategies)
                 {
                     Console.WriteLine("\t" + "Strategy " + i.ToString() + ": " + strategy.StrategyName);
+                    int j = 1;
+                    foreach(FinancialInstrumentPosition position in strategy.Positions)
+                    {
+                        Console.WriteLine("\t\t" + "Position " + j.ToString() + ": " + position.Instrument.InstrumentTicker + " " + 
+                            position.TradeDirection.ToString() + " " +  ObjectToText.NumberWithCommas(position.GetCurrentNotional(),1));
+                        j++;
+                    }
+
                     i++;
                 }
                 Console.WriteLine();

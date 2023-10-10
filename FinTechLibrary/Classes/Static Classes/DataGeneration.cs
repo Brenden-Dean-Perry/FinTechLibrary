@@ -14,11 +14,50 @@ namespace FinTechLibrary
         {
             List<InvestmentStrategy> strategyList = new List<InvestmentStrategy>();
             InvestmentStrategy strategy = new InvestmentStrategy();
+
+            string[] securities = { "NVDA", "AMD", "GOOG", "FB", "MSFT" };
+            decimal[] prices = { 420, 100, 120, 300, 340};
+            int secIteration = 0;
+            foreach(string sec in securities)
+            {
+                FinancialInstrumentPosition position = new FinancialPhysicalPosition();
+                Instrument_Equity equity = new Instrument_Equity();
+                equity.InstrumentTicker = sec;
+                equity.CurrentPrice = prices[secIteration];
+                position.Quantity = 1000;
+                position.TradeDirection = TradeDirectionType.Long;
+                position.Instrument = equity;
+                strategy.Positions.Add(position);
+                secIteration++;
+            }
+
             strategy.StrategyName = "AI Equity";
             strategyList.Add(strategy);
 
+
             InvestmentStrategy strategy2 = new InvestmentStrategy();
             strategy2.StrategyName = "Put write";
+        
+            string[] tickers = { "SPY Put 90% March 2024" , "SPY Put 95% January 2024", "SPY Put 95% Decmeber 2023" };
+            decimal[] putprices = { 200, 100, 50 };
+            secIteration = 0;
+            foreach (string sec in tickers)
+            {
+
+                FinancialOption put = new Instrument_PutOption();
+                put.InstrumentTicker = sec;
+                put.CurrentPrice = putprices[secIteration];
+                put.CurrentSpotPriceOfUnderlyingInstrument = 4300;
+                put.ContractMultiplier = 50;
+
+                FinancialOptionPosition position = new FinancialOptionPosition();
+                position.Instrument = put;
+                position.DerivativeInstrument = put;
+                position.Quantity = 10;
+                position.TradeDirection = TradeDirectionType.Short;
+                strategy2.Positions.Add(position);
+                secIteration++;
+            }
             strategyList.Add(strategy2);
 
             List<AssetClass> assetClasses = new List<AssetClass>();

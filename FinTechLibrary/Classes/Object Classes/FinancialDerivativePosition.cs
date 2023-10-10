@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace FinTechLibrary
 {
-    public class FinancialDerivativePosition : FinancialInstrumentPosition, IPosition
+    public class FinancialDerivativePosition : FinancialInstrumentPosition,  IPosition
     {
-        public new FinancialDerivative Instrument { get; set; }
+        public FinancialDerivative DerivativeInstrument { get; set; }
 
         public override decimal GetCurrentNotional()
         {
-            return (int)TradeDirection * Quantity * Instrument.CurrentSpotPriceOfUnderlyingInstrument;
+            return (int)TradeDirection * DerivativeInstrument.ContractMultiplier * Quantity * DerivativeInstrument.CurrentSpotPriceOfUnderlyingInstrument;
         }
 
         public override decimal GetCurrentDeltaAdjustedNotional()

@@ -10,7 +10,7 @@ namespace FinTechLibrary
     {
         public string StrategyName { get; set; }
         public int StrategyOrder { get; set; } = 0;
-        private List<FinancialInstrumentPosition> Positions { get; set; } = new List<FinancialInstrumentPosition>();
+        public List<FinancialInstrumentPosition> Positions { get; set; } = new List<FinancialInstrumentPosition>();
 
         public decimal GetCurrentDeltaAdjustedNotional()
         {
