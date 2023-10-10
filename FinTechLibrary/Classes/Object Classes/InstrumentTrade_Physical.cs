@@ -8,18 +8,18 @@ namespace FinTechLibrary
 {
     public class InstrumentTrade_Physical : InstrumentTrade
     {
-        public FinancialInstrument Instrument { get; set; }
+        public new FinancialInstrument Instrument { get; set; }
 
         public override decimal GetOpenGainLoss()
         {
             decimal changeInPrice = (Instrument.CurrentPrice - base.TradePrice);
-            decimal direction = (int)base.TradeType;
+            decimal direction = (int)base.TradeDirectionType;
             return direction * changeInPrice * base.Quantity;
         }
 
         public override decimal GetCurrentMarketValue()
         {
-            decimal direction = (int)base.TradeType;
+            decimal direction = (int)base.TradeDirectionType;
             return direction * Instrument.CurrentPrice * base.Quantity;
         }
 

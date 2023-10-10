@@ -26,7 +26,7 @@ namespace FinTechLibrary
 
         public decimal GetFuturesPriceBasis()
         {
-            return base.Instrument.CurrentPrice - CurrentSpotPriceOfUnderlyingInstrument;
+            return CurrentPrice - CurrentSpotPriceOfUnderlyingInstrument;
         }
 
         public string GetFuturesFairValueDescription()
@@ -47,14 +47,14 @@ namespace FinTechLibrary
 
         public decimal GetFuturesMispricing()
         {
-            return base.Instrument.CurrentPrice - GetFuturesFairValuePrice();
+            return CurrentPrice - GetFuturesFairValuePrice();
         }
 
         public decimal GetFuturesFairValuePrice(int daysPerYear = 360)
         {
             double futureValueFactor = Math_Finance.FutureValueFactor((double)RiskFreeInterestRate, GetTimeFactorInDaysPerYear(daysPerYear));
             decimal futureValueOfPrice = CurrentSpotPriceOfUnderlyingInstrument * (decimal)futureValueFactor;
-            decimal dividendInIndexPoints = base.Instrument.AnnualDividendPayoutAmount * (decimal)GetTimeFactorInDaysPerYear(daysPerYear);
+            decimal dividendInIndexPoints = AnnualDividendPayoutAmount * (decimal)GetTimeFactorInDaysPerYear(daysPerYear);
             return futureValueOfPrice - dividendInIndexPoints;
         }
     }

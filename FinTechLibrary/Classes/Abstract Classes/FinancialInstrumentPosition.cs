@@ -11,13 +11,7 @@ namespace FinTechLibrary
         public FinancialInstrument Instrument { get; set; }
         public TradeDirectionType TradeDirection { get; set; }
         public decimal Quantity { get; set; }
-        public decimal AnnualDividendPayoutAmount { get; set; }
-
-        public decimal GetCurrentDividendYield()
-        {
-            return AnnualDividendPayoutAmount / Instrument.CurrentPrice;
-        }
-
+ 
         public decimal GetOpenGainLoss()
         {
             throw new NotImplementedException();

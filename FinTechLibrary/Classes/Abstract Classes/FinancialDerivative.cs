@@ -12,6 +12,13 @@ namespace FinTechLibrary
         public decimal RiskFreeInterestRate { get; set; }
         public DateTime ExpirationDate { get; set; }
         public decimal ContractMultiplier { get; set; }
+        public decimal AnnualDividendPayoutAmount { get; set; }
+
+        public decimal GetCurrentDividendYield()
+        {
+            return AnnualDividendPayoutAmount / CurrentPrice;
+        }
+
 
         public double GetDaysUntilExpirationIncludingTime()
         {

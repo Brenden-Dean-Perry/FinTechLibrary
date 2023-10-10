@@ -38,7 +38,7 @@ InstrumentTrade_DerivativePutOption callTrade = new InstrumentTrade_DerivativePu
 callTrade.Instrument = option;
 callTrade.Quantity = 1;
 callTrade.TradePrice = 10;
-callTrade.TradeType = TradeType.Sell;
+callTrade.TradeDirectionType = TradeDirectionType.Short;
 
 
 FinancialOption putoption = OptionFactory.CreateObject(OptionType.Put);
@@ -57,7 +57,7 @@ spy.CurrentPrice = 4200;
 InstrumentTrade_Physical trade_spy = new InstrumentTrade_Physical();
 trade_spy.Instrument = spy;
 trade_spy.Quantity = 10;
-trade_spy.TradeType = TradeType.Sell;
+trade_spy.TradeDirectionType = TradeDirectionType.Short;
 trade_spy.TradePrice = 4400;
 
 

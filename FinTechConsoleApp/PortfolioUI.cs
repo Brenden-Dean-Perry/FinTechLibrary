@@ -50,7 +50,7 @@ namespace FinTechLibrary
             Console.WriteLine("Trade Date | Direction | Quantity | Trade Price");
             foreach (InstrumentTrade trade in portfolio.GetTradeHistory())
             {
-                Console.WriteLine(trade.TradeDateTime + " | " + trade.TradeType.ToString() + " | " + trade.Quantity + " | " + trade.TradePrice);
+                Console.WriteLine(trade.TradeDateTime + " | " + trade.TradeDirectionType.ToString() + " | " + trade.Quantity + " | " + trade.TradePrice);
             }
         }
 

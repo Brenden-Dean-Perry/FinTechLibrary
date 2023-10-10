@@ -8,12 +8,12 @@ namespace FinTechLibrary
 {
     public class InstrumentTrade_DerivativeDelta1 : InstrumentTrade
     {
-        public FinancialDerivative Instrument { get; set; }
+        public new FinancialDerivative Instrument { get; set; }
 
         public override decimal GetOpenGainLoss()
         {
             decimal changeInPrice = (Instrument.CurrentPrice - base.TradePrice);
-            decimal direction = (int)base.TradeType;
+            decimal direction = (int)base.TradeDirectionType;
             return direction * changeInPrice * base.Quantity * Instrument.ContractMultiplier;
         }
 
@@ -24,7 +24,7 @@ namespace FinTechLibrary
 
         public override decimal GetCurrentNotional()
         {
-            decimal direction = (int)base.TradeType;
+            decimal direction = (int)base.TradeDirectionType;
             return direction * Instrument.CurrentSpotPriceOfUnderlyingInstrument * base.Quantity * Instrument.ContractMultiplier;
         }
 

@@ -8,26 +8,22 @@ namespace FinTechLibrary
 {
     public abstract class FinancialLoanPosition : FinancialInstrumentPosition, IPosition
     {
-        public FinancialLoan Instrument { get; set; }
+        public new FinancialLoan Instrument { get; set; }
 
-        public decimal GetCurrentMarketValue()
+        public override decimal GetCurrentMarketValue()
         {
             return (int)TradeDirection * Instrument.LoanAmount;
         }
 
-        public decimal GetCurrentNotional()
+        public override decimal GetCurrentNotional()
         {
             return GetCurrentMarketValue();
         }
 
-        public decimal GetCurrentDeltaAdjustedNotional()
+        public override decimal GetCurrentDeltaAdjustedNotional()
         {
             return GetCurrentMarketValue();
         }
 
-        public decimal GetOpenGainLoss()
-        {
-            throw new NotImplementedException();
-        }
     }
 }
